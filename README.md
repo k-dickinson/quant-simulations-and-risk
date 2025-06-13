@@ -19,30 +19,28 @@ It’s a core assumption behind models like Black-Scholes, and a building block 
 
 ---
 
-## Model Equation
+## How Geometric Brownian Motion Works
 
-The GBM equation is:
+At its core, GBM assumes that stock prices grow continuously over time, but with some randomness. We use a formula that captures both the average growth (drift) and the randomness (volatility).
 
-$$
-dS_t = \mu S_t dt + \sigma S_t dW_t
-$$
-
-Where:
-
-* $S_t$: Stock price at time t
-* $\mu$: Expected return (drift)
-* $\sigma$: Volatility
-* $W_t$: Wiener process (Brownian motion)
-
-In discretized form:
+Here’s the equation we use to simulate it:
 
 $$
 S_{t+1} = S_t \cdot \exp\left((\mu - \frac{1}{2} \sigma^2)\Delta t + \sigma \sqrt{\Delta t} \cdot Z_t\right)
 $$
 
-Where $Z_t \sim \mathcal{N}(0, 1)$
+Where:
 
----
+* $S_t$: The stock price at time $t$
+* $\mu$: The average return (drift)
+* $\sigma$: The volatility (how much it varies)
+* $\Delta t$: A small time step (like 1/252 for daily steps)
+* $Z_t$: A random value drawn from a standard normal distribution (mean 0, standard deviation 1). Think of it like a weighted coin flip that can nudge the stock price up or down by a random amount, based on volatility.
+
+This formula basically says: take the current price, and adjust it using both the average return and some randomness. That’s what gives the simulated path its wiggly, realistic shape.
+
+It’s powerful because it captures the idea that while we can expect growth over time, prices also bounce around in unpredictable ways.
+
 
 ## What This Project Does
 
@@ -56,8 +54,7 @@ This forms the base for more complex models like Monte Carlo simulations for por
 
 ## Example Output
 
-*(Insert a plot screenshot here — matplotlib or seaborn generated paths from your simulation)*
-
+![Sample GBM Output](https://github.com/k-dickinson/geometric-brownian-motion/blob/main/GBM_Simulation.png)
 ---
 
 ## How It Works (Python)
@@ -104,7 +101,7 @@ This is just phase 1 of my broader project. Upcoming improvements:
 
 ## Questions?
 
-  If you have any questions, feel free to drop them in the [Instagram comments](https://instagram.com/quant_kyle) or open an issue!
+  If you have any questions, feel free to drop them in the [Instagram](https://instagram.com/quant_kyle) comments or open an issue!
 
 ---
 
