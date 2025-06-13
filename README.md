@@ -109,4 +109,4 @@ This is just phase 1 of my broader project. Upcoming improvements:
 ## Resources I Used
 
 * [GBM Article: Quant Start](https://www.quantstart.com/articles/geometric-brownian-motion-simulation-with-python/?utm_source=chatgpt.com)
-* [GBM Youtube Video: Dummy R](https://m.youtube.com/watchv=5A2iNvpAv1w&pp=ygUZR2VvbWV0cmljIGJyb3duaWFuIG1vdGlvbg%3D%3D)
+* [GBM Youtube Video: Dummy R](https://www.youtube.com/watch?app=desktop&v=5A2iNvpAv1w%5C)
