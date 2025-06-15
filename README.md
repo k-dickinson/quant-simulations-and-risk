@@ -110,3 +110,70 @@ This is just phase 1 of my broader project. Upcoming improvements:
 
 * [GBM Article: Quant Start](https://www.quantstart.com/articles/geometric-brownian-motion-simulation-with-python/?utm_source=chatgpt.com)
 * [GBM Youtube Video: Dummy R](https://www.youtube.com/watch?app=desktop&v=5A2iNvpAv1w%5C)
+
+## Development Environment Setup
+
+This project uses [Nix](https://nixos.org/) and [devenv](https://devenv.sh/) to provide a consistent and reproducible development environment. This setup ensures that all developers work with the same Python version, dependencies, and Jupyter environment.
+
+### Prerequisites
+
+1. **Install Nix**
+   * Follow the [Nix installation guide](https://nixos.org/download.html) for your operating system
+   * After installation, restart your terminal
+
+2. **Install devenv**
+
+   ```bash
+   nix-env -if https://github.com/cachix/devenv/tarball/latest
+   ```
+
+### Getting Started
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/k-dickinson/quant-simulations-and-risk.git
+   cd quant-simulations-and-risk
+   ```
+
+2. **Enter the development environment**
+
+   ```bash
+   devenv shell
+   ```
+
+   This will:
+   * Create a Python virtual environment
+   * Install all required dependencies
+   * Set up the Jupyter kernel
+
+3. **Start JupyterLab**
+
+   ```bash
+   devenv up
+   ```
+
+   This will start JupyterLab at `http://127.0.0.1:8888`
+
+### Project Structure
+
+* `devenv.nix` - Development environment configuration
+* `flake.nix` - Nix flake configuration for reproducible builds
+* `pyproject.toml` - Python project dependencies
+* `notebooks/` - Jupyter notebooks for simulations and analysis
+  * `gbm_simulation.ipynb` - Main GBM simulation notebook
+* `GBM_Code.py` - Core GBM simulation implementation
+
+### Python Dependencies
+
+The project uses the following key Python packages:
+
+* numpy - For numerical computations
+* matplotlib - For plotting
+* yfinance - For fetching financial data
+* jupyterlab - For interactive development
+* ipywidgets - For interactive visualizations
+
+These dependencies are automatically managed by the development environment.
+
+---
