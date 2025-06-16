@@ -1,9 +1,10 @@
-# geometric-brownian-motion
-Simulating stock price paths using Geometric Brownian Motion (GBM) in Python
+# Stock Price Simulation and Risk Analysis in Python
 
-# Geometric Brownian Motion Simulation for Stock Prices
+Simulating financial markets using Geometric Brownian Motion (GBM), Monte Carlo methods, and risk metrics like Value at Risk (VaR).
 
-Hi, I’m Kyle — an incoming math student at Carnegie Mellon University, documenting my journey into quantitative finance. This project is part of a larger portfolio simulation I’m building, starting with the Geometric Brownian Motion model, a fundamental tool in quant finance.
+---
+
+Hi, I’m Kyle — an incoming math student at Carnegie Mellon University, documenting my journey into quantitative finance. This project is part of a broader effort to explore how mathematical models are used to simulate stock behavior and assess financial risk. It begins with Geometric Brownian Motion, builds into Monte Carlo simulations, and culminates in practical risk analysis.
 
 ---
 
