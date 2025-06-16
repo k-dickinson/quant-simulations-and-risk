@@ -48,7 +48,7 @@ It’s powerful because it captures the idea that while we can expect growth ove
 * Plots them over time
 * Demonstrates how volatility and drift affect long-term outcomes
 
-This forms the base for more complex models like Monte Carlo simulations for portfolios, option pricing, or risk modeling, which I'll be adding soon.
+This forms the base for more complex models like Monte Carlo simulations for portfolios, option pricing, or risk modeling, which are discussed later on.
 
 ---
 
@@ -79,30 +79,90 @@ S[0] = S0
 for t in range(1, N):
     S[t] = S[t-1] * np.exp((mu - 0.5 * sigma**2)*dt + sigma*np.sqrt(dt)*Z[t])
 ```
-You can check out the full simulation code [here](https://github.com/k-dickinson/geometric-brownian-motion/blob/main/GBM_Code.py).
+
+You can check out the full simulation code [here](https://github.com/k-dickinson/geometric-brownian-motion/blob/main/GBM_Code.py)
 
 ---
 
-## Related Video
+## What is a Monte Carlo Simulation?
 
-Check out my Instagram breakdown where I explain this model visually:
+A Monte Carlo simulation models uncertainty by running the same process (like GBM) many times using random inputs. In finance, this helps us:
+
+- Visualize a range of possible outcomes
+- Estimate the probability of gains or losses
+- Measure risk under extreme market conditions
+
+Earlier, I simulate a single stock path — but the framework supports scaling to thousands of simulations and portfolio-level analysis which you can see below.
+
+---
+
+## Example Output
+
+![Sample Monte Carlo Simulation Output](https://github.com/k-dickinson/quant-simulations-and-risk/blob/main/monte_carlo_example_output.png)
+---
+
+## How it works
+
+Basic Parameters:
+
+```python
+S0 = 100          # initial stock price
+mu = 0.1          # expected anunual return
+sigma = 0.1123    # annual volatility
+T = 1             # time in years
+N = 252           # number of steps
+dt = int(T/N)     # number of steps
+M = 10000         # number of simulation paths
+```
+
+Simulation:
+```python
+# Set up matrix for all paths
+price_paths = np.zeros((M, N+1))
+price_paths[:, 0] = S0   # initialize all paths at S0
+
+# Generate all random shocks (Z) at once
+Z = np.random.normal(0, 1, size=(M, N))
+
+# Simulate paths
+for t in range(1, N+1):
+    price_paths[:, t] = price_paths[:, t-1] * np.exp(
+        (mu - 0.5 * sigma**2) * dt + sigma * np.sqrt(dt) * Z[:, t-1]
+    )
+```
+
+You can check out the full simulation code [here](https://github.com/k-dickinson/quant-simulations-and-risk/blob/main/Monte_Carlo_GBM.py)
+
+---
+
+## Visualizing Risk: Histogram + Path Plot
+
+To analyze the risk in a meaningful way, we can:
+
+- Plot multiple simulated price paths
+- Create a histogram of the final prices across all simulations
+
+This lets us estimate downside risk with:
+
+- Value at Risk (VaR) – the worst expected loss at a confidence level
+- Probability of Loss – the probability of the stock having returns below the value you entered at
+
+Example side-by-side output:
+
+![Sample Monte Carlo Simulation Output](https://github.com/k-dickinson/quant-simulations-and-risk/blob/main/Monte_Carlo_Outputs_Sidebyside.png)
+
+---
+
+## Related Videos
+
+Check out my Instagram breakdown where I explain this parts of this model through analogies:
 [Instagram Link](https://instagram.com/quant_kyle)
-
----
-
-## What’s Next
-
-This is just phase 1 of my broader project. Upcoming improvements:
-
-* Monte Carlo simulation with GBM
-* Portfolio of assets with correlation
-* Risk metrics (VaR, CVaR)
 
 ---
 
 ## Questions?
 
-  If you have any questions, feel free to drop them in the [Instagram](https://instagram.com/quant_kyle) comments or open an issue!
+If you have any questions, feel free to drop them in the [Instagram](https://instagram.com/quant_kyle) comments or open an issue!
 
 ---
 
