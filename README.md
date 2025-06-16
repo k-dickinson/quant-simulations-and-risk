@@ -93,7 +93,7 @@ A Monte Carlo simulation models uncertainty by running the same process (like GB
 - Estimate the probability of gains or losses
 - Measure risk under extreme market conditions
 
-Earlier, I simulate a single stock path — but the framework supports scaling to thousands of simulations and portfolio-level analysis which you can see below.
+Earlier, We simulate a single stock path — but the framework supports scaling to thousands of simulations and portfolio-level analysis which you can see below.
 
 ---
 
