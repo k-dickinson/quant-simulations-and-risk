@@ -170,4 +170,6 @@ If you have any questions, feel free to drop them in the [Instagram](https://ins
 ## Resources I Used
 
 * [GBM Article: Quant Start](https://www.quantstart.com/articles/geometric-brownian-motion-simulation-with-python/?utm_source=chatgpt.com)
-* [GBM Youtube Video: Dummy R](https://www.youtube.com/watch?app=desktop&v=5A2iNvpAv1w%5C)
+* [GBM Video: Dummy R](https://www.youtube.com/watch?app=desktop&v=5A2iNvpAv1w%5C)
+* [Monte Carlo Video: MarbleScience](https://www.youtube.com/watch?v=7ESK5SaP-bc)
+* [Monte Carlo Video: IBM Technology](https://www.youtube.com/watch?v=7TqhmX92P6U)
