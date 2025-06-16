@@ -31,14 +31,6 @@ for t in range(1, N+1):
 
 final_prices = price_paths[:, -1]
 
-for i in range(10000):  # Plot fewer paths for clarity
-    plt.plot(price_paths[i])
-plt.title("Monte Carlo Simulated Price Paths for SPY")
-plt.xlabel("Trading Days")
-plt.ylabel("Price")
-plt.show()
-
-'''
 # Create a figure with two subplots side by side
 fig, axs = plt.subplots(1, 2, figsize=(16, 6))
 
@@ -82,4 +74,3 @@ plt.gca().text(
 # Adjust layout and show both plots together
 plt.tight_layout()
 plt.show()
-'''
