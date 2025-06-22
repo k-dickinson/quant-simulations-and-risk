@@ -154,6 +154,104 @@ Example side-by-side output:
 
 ---
 
+## Monte Carlo Portfolio Simulation Using Matrix Multiplication
+
+In this final section, we simulate a multi-asset portfolio using:
+
+* Geometric Brownian Motion (GBM)
+* Monte Carlo simulation (10,000 paths)
+* Matrix multiplication to model correlated returns
+* Risk metrics like Value at Risk (VaR) and probability of loss
+
+This helps us estimate the range of possible portfolio outcomes more realistically than treating each asset as independent.
+
+---
+
+## Why Matrix Multiplication?
+
+Assets like AAPL, TSLA, and NVDA often move together — meaning their returns are correlated. To simulate this properly:
+
+1. Define a correlation matrix between assets
+2. Compute the covariance matrix:
+
+```python
+cov_matrix = np.outer(sigma, sigma) * correlation_matrix
+```
+
+3. Apply Cholesky decomposition to get a lower-triangular matrix `L` such that:
+
+```
+cov_matrix ≈ L @ L.T
+```
+
+4. Generate standard normal random shocks `Z` (shape: time steps × assets), then create correlated shocks:
+
+```python
+correlated_Z = Z @ L.T
+```
+
+This gives us realistic joint behavior between the assets — if Tesla crashes, Nvidia may follow, and our model reflects that.
+
+---
+
+## How the Simulation Works
+
+* Tickers: AAPL, TSLA, NVDA
+* Weights: `[0.4, 0.3, 0.3]`
+* Drift: annual expected returns `[8%, 12%, 10%]`
+* Volatility: annualized `[15%, 20%, 18%]`
+* Correlation matrix: manually specified
+* Simulation horizon: 252 trading days
+* Number of simulations: 10,000
+* Portfolio value at start: \$100,000
+
+At each timestep for each simulation, the asset prices evolve via GBM, and we compute the weighted portfolio value.
+
+---
+
+## Example Output
+
+![Portfolio Simulation Output](https://github.com/k-dickinson/quant-simulations-and-risk/blob/main/Portfolio_MonteCarlo_Figure.png)
+
+---
+
+## Visualizing the Results
+
+* **Left plot:** 10,000 simulated portfolio paths over time
+* **Right plot:** Histogram of ending portfolio values
+
+  * Red line = 95% Value at Risk (VaR)
+  * Orange line = \$100,000 initial value
+  * Text box = risk summary (VaR and % chance of loss)
+
+---
+
+## Why This Matters
+
+This simulation gives a realistic view of potential future outcomes for a portfolio. It shows:
+
+* How uncertainty grows over time
+* How diversification helps reduce risk
+* What extreme downside scenarios (VaR) might look like
+
+---
+
+## Skills Demonstrated
+
+This model demonstrates:
+
+* Stochastic modeling (GBM)
+* Portfolio-level Monte Carlo simulation
+* Correlated asset behavior via matrix decomposition
+* Vectorized, production-style code
+* Risk analysis (VaR, probability of loss)
+
+These are highly relevant to quant research, trading, and strategist roles — especially at firms like SIG, IMC, Citadel, or smaller prop shops.
+
+You can check out the full simulation code [here](https://github.com/k-dickinson/quant-simulations-and-risk/blob/main/portfolio_montecarlo_gbm.py)
+
+---
+
 ## Related Videos
 
 Check out my Instagram breakdown where I explain this parts of this model through analogies:
