@@ -1,7 +1,5 @@
 # Stock Price Simulation and Risk Analysis in Python
 
-Simulating financial markets using Geometric Brownian Motion (GBM), Monte Carlo methods, and risk metrics like Value at Risk (VaR).
-
 ---
 
 Hi, I’m Kyle — an incoming math student at Carnegie Mellon University, documenting my journey into quantitative finance. This project explores how mathematical models can simulate stock price behavior, assess portfolio performance, and measure financial risk. It begins with Geometric Brownian Motion (GBM) to model individual stock paths, expands into Monte Carlo simulations across thousands of scenarios, and culminates in a portfolio-level risk analysis using correlation structures, and metrics like Value at Risk (VaR) and probability of loss. Along the way, it demonstrates techniques used in real-world quantitative research and trading.
