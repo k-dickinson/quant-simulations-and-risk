@@ -25,8 +25,12 @@ At its core, GBM assumes that stock prices grow continuously over time, but with
 Here’s the equation we use to simulate it:
 
 $$
-S_{t+1} = S_t \cdot \exp\left((\mu - \frac{1}{2} \sigma^2)\Delta t + \sigma \sqrt{\Delta t} \cdot Z_t\right)
+S_{t+1} = S_t \cdot \exp\left( \left( \mu - \frac{1}{2} \sigma^2 \right) \Delta t + \sigma \sqrt{\Delta t} \cdot Z_t \right)
 $$
+
+For Mobile Users:
+
+S_{t+1} = S_t * exp((μ - (1/2)σ²)Δt + σ√Δt * Z_t)
 
 Where:
 
